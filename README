@@ -15,3 +15,7 @@ cp .env.example .env
 # MONGO_PORT=27017
 # run
 node bin/www
+
+# How to create a user
+# run
+node bin/create-user [email] [password]
