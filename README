@@ -19,3 +19,50 @@ node bin/www
 # How to create a user
 # run
 node bin/create-user [email] [password]
+
+API has 3 calls :
+
+1) Retrieve token
+Request:
+POST /api/authenticate HTTP/1.1
+Host: localhost:3000
+Cache-Control: no-cache
+Postman-Token: 23650baf-e8ef-73e8-7dc5-08894378cfe9
+Content-Type: application/x-www-form-urlencoded
+
+email=alex%40alex.com&password=1234
+
+Response: 
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjQ2MGE2YjE3ODYxOWYwM2VkNjllYmQiLCJlbWFpbCI6ImFsZXhAYWxleC5jb20iLCJwYXNzd29yZCI6IjEyMzQiLCJfX3YiOjB9.kIe0LprcN-KejIRrIHfUSFisaB5ottQaTp2yygtaZRU"
+}
+
+2) a public call, no need to send a token
+Request:
+GET /api HTTP/1.1
+Host: localhost:3000
+Cache-Control: no-cache
+Postman-Token: eb6917eb-c9be-aa38-ab90-46b4c88b412d
+
+Response :
+{
+  "message": "This API call needs no token"
+}
+
+3) a private call, needs a token, returns a list of application's users
+Request:
+GET /api/users HTTP/1.1
+Host: localhost:3000
+x-access-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjQ2MGE2YjE3ODYxOWYwM2VkNjllYmQiLCJlbWFpbCI6ImFsZXhAYWxleC5jb20iLCJwYXNzd29yZCI6IjEyMzQiLCJfX3YiOjB9.kIe0LprcN-KejIRrIHfUSFisaB5ottQaTp2yygtaZRU
+Cache-Control: no-cache
+Postman-Token: 6b68d67a-a1f8-a391-1add-25f69b183ec1
+
+Response:
+[
+  {
+    "_id": "56460a6b178619f03ed69ebd",
+    "email": "alex@alex.com",
+    "password": "1234",
+    "__v": 0
+  }
+]
