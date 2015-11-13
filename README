@@ -1,1 +1,17 @@
-This repository tests JSON Web Tokens using Express framework based on a blog post https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+This repository tests JSON Web Tokens using Express framework based on the blog post https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens.
+
+run it on your machine :
+
+#clone
+git clone git@github.com:alexmon/express-jwt-test.git 
+# enter directory
+cd express-jwt-test.git
+# install dependencies
+npm install --save
+# generate dotenv file
+cp .env.example .env
+# change .env variables if you wish
+# MONGO_DB=express-jwt-test
+# MONGO_PORT=27017
+# run
+node bin/www
